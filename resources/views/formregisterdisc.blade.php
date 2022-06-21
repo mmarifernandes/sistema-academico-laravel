@@ -1,3 +1,4 @@
+@extends('includes.header')
 
 <!-- @if ($errors->any())
     <div class="alert alert-danger">
@@ -18,7 +19,7 @@
         </div>
         <div class="form-group">
           <div class="col-md-4 mb-3">
-            <label for="emailInputLabel">E-mail:</label>
+            <label for="emailInputLabel">Carga Horária:</label>
             <input type="text" class="form-control" id="emailInputLabel" name = "email">
           </div>
         </div>

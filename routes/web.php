@@ -25,3 +25,5 @@ Route::get('/', function () {
 Route::get('registrationaluno', 'App\Http\Controllers\AlunosController@registrationAluno');
 Route::get('registrationprof', 'App\Http\Controllers\ProfessoresController@registrationProf');
 Route::get('registrationdisc', 'App\Http\Controllers\DisciplinasController@registrationDisc');
+Route::post('insertdataaluno',  'App\Http\Controllers\AlunosController@insertDataAluno');
+Route::get('alunosview',  'App\Http\Controllers\AlunosController@alunosview');
