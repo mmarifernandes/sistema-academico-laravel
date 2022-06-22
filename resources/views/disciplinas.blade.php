@@ -40,23 +40,25 @@
 <div class="w3-container">
 
 <br>
-  <a href="{{ url('/registrationaluno') }}" class="w3-bar-item w3-button">Cadastrar Aluno</a>
+
+  <a href="{{ url('/registrationdisc') }}" class="w3-bar-item w3-button">Cadastrar Disciplinas</a>
 
 <br>
     <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Matrícula</th>
+
       <th scope="col">Nome</th>
-      <th scope="col">Email</th>
+      <th scope="col">Professor</th>
+      <th scope="col">Carga Horária</th>
 
     </tr>
   </thead>
   <tbody>
-    @foreach ($alunos as $aluno)
-        <tr> <td> {{ $aluno['matricula'] }}</td>
-        <td> {{ $aluno['nome'] }} </td>
-        <td> {{ $aluno['email'] }} </td>
+    @foreach ($disciplinas as $disciplina)
+        <tr> <td> {{ $disciplina['nomed'] }}</td>
+        <td> {{ $disciplina['nomep'] }} </td>
+        <td> {{ $disciplina['cargahoraria'] }}h </td>
 </tr>
     @endforeach
   </tbody>

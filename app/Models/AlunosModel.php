@@ -18,4 +18,9 @@ class AlunosModel extends Model
     public function aluno(){
         return $this->belongsTo(Alunos::class,'matricula');
     }
+
+    public function insert($data){
+        return $this->save($data);
+    }
+
 }

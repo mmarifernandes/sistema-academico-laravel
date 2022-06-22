@@ -1,11 +1,11 @@
 <?php
 
-namespace sistemaacademico;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Professores extends Model
+class ProfessoresModel extends Model
 {
     protected $fillable = [
         'codigo',
@@ -18,4 +18,9 @@ class Professores extends Model
     public function aluno(){
         return $this->belongsTo(Alunos::class,'codigo');
     }
+
+        public function insert($data){
+        return $this->save($data);
+    }
+
 }

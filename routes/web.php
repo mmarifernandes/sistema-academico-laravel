@@ -27,3 +27,7 @@ Route::get('registrationprof', 'App\Http\Controllers\ProfessoresController@regis
 Route::get('registrationdisc', 'App\Http\Controllers\DisciplinasController@registrationDisc');
 Route::post('insertdataaluno',  'App\Http\Controllers\AlunosController@insertDataAluno');
 Route::get('alunosview',  'App\Http\Controllers\AlunosController@alunosview');
+Route::post('insertdataprofessor',  'App\Http\Controllers\ProfessoresController@insertDataProfessor');
+Route::get('professoresview',  'App\Http\Controllers\ProfessoresController@professoresview');
+Route::post('insertdatadisc',  'App\Http\Controllers\DisciplinasController@insertDataDisciplina');
+Route::get('disciplinasview',  'App\Http\Controllers\DisciplinasController@disciplinasview');

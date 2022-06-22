@@ -10,11 +10,12 @@
 @endif -->
 
 @extends('includes.header')
-<form action="{{ url('insertdatauser') }}" method="post">
+<form action="{{ url('insertdataprofessor') }}" method="post">
+          @csrf
         <div class="form-group">
           <div class="col-md-4 mb-3">
             <label for="nameInputLabel">Name:</label>
-            <input type="text" class="form-control" id="nameInputLabel" name="name">
+            <input type="text" class="form-control" id="nameInputLabel" name="nome">
           </div>
         </div>
         <div class="form-group">

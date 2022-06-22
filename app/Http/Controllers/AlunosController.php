@@ -17,24 +17,16 @@ class AlunosController extends Controller
         public function insertDataAluno(Request $request)
         {
 
-        // $validator = Validator::make($request->all(),[
-        //     'name' => 'required|min:5|max:255',
-        //     'email' => 'required|email:rfc',
-        //     'passwd' => 'required|min:5|max:100',
-        // ]);
-        // if ($validator->fails()){
-        //     return redirect('/registration')
-        //     ->withErrors($validator)
-        //     ->withInput();
+        $randomNumber = random_int(10000000, 99999999);
 
-        // }
 
         $alunosmodel = new AlunosModel;
+
         $alunosmodel->nome = $request->nome;
         $alunosmodel->email = $request->email;
-        $alunosmodel->matricula = '234';
-        // store data to table alunos
-        $alunosmodel->save();
+        $alunosmodel->matricula = $randomNumber;
+        $data[] = $alunosmodel;
+        $alunosmodel->insert($data);
         return redirect('/');
 
     }

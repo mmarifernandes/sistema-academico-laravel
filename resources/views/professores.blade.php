@@ -2,22 +2,22 @@
 <html lang="en">
 @extends('includes.header')
 <style>
-    .w3-container, .w3-panel {
-    padding: 0.01em 40px !important;
-}
+    table{
+        margin: auto !important;
+        width: 65% !important;
 
-.w3-container.a {
+    }
+    .w3-container.a {
     background-color: #d20054!important;
     color: #fff;
 }
-h2{
-    margin: 30px 0 !important;
+
+    .table>:not(caption)>*>* {
+    padding: 1rem 1rem !important;
+
 }
 </style>
 <body>
-
-
-<!-- Sidebar -->
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:18%;">
 
 <div class="w3-container a">
@@ -38,12 +38,36 @@ h2{
 
 
 <div class="w3-container">
-<h2>Bem-vindo ao sistema de controle de servidores e alunos</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem nisi reiciendis sint doloremque, fugit officiis nesciunt unde quis magnam corporis minima. Quod, quisquam cupiditate. Placeat dolores eius dolorem neque provident.</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta saepe aliquid vitae et. Recusandae distinctio corporis deserunt rerum quas maiores repellendus alias sunt, quod, delectus ratione, ipsa cupiditate. Sit, minus!</p>
-</div>
+
+<br>
+
+  <a href="{{ url('/registrationprof') }}" class="w3-bar-item w3-button">Cadastrar Professor</a>
+
+<br>
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($professores as $professor)
+        <tr> <td> {{ $professor['codigo'] }}</td>
+        <td> {{ $professor['nome'] }} </td>
+        <td> {{ $professor['email'] }} </td>
+</tr>
+    @endforeach
+  </tbody>
+</table>
+
+
+
 
 </div>
 
+</div>
 </body>
 </html>
