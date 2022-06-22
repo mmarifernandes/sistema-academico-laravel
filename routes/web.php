@@ -31,3 +31,4 @@ Route::post('insertdataprofessor',  'App\Http\Controllers\ProfessoresController@
 Route::get('professoresview',  'App\Http\Controllers\ProfessoresController@professoresview');
 Route::post('insertdatadisc',  'App\Http\Controllers\DisciplinasController@insertDataDisciplina');
 Route::get('disciplinasview',  'App\Http\Controllers\DisciplinasController@disciplinasview');
+Route::get('alunoperfil/{id}','App\Http\Controllers\AlunosController@alunoPerfil');

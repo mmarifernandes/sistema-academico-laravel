@@ -21,7 +21,7 @@ h2{
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:18%;">
 
 <div class="w3-container a">
-  <h3 class="w3-bar-item">Menu</h3>
+  <a href="{{ url('/') }}"><h3 class="w3-bar-item">Menu</h3></a>
 </div>
 
   <a href="{{ url('/alunosview') }}" class="w3-bar-item w3-button">Alunos</a>

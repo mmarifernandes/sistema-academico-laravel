@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AlunosModel;
+use App\Models\DisciplinasModel;
 
 class AlunosController extends Controller
 {
@@ -13,6 +14,17 @@ class AlunosController extends Controller
         return view('formregisteraluno');
     }
 
+       public function alunoPerfil($id)
+   {
+
+
+        $alunosmodel = new AlunosModel;
+        $data['disciplinas'] = $alunosmodel->getalunodisc($id);
+        $data['all'] = $alunosmodel->getaluno($id);
+        $data['aluno'] = $data['all'];
+
+        return view('alunoperfil', $data);
+    }
 
         public function insertDataAluno(Request $request)
         {
@@ -41,4 +53,7 @@ class AlunosController extends Controller
         $data['alunos'] = $data['all'];
         return view ('alunos',$data);
     }
+
+
+
 }

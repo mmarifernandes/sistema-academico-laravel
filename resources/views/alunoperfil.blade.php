@@ -35,36 +35,39 @@
 <div class="w3-container w3-pink">
   <h1>My system.exe</h1>
 </div>
-
-
 <div class="w3-container">
+    <br>
+    <a href="{{ url('/registrationaluno') }}" class="w3-bar-item w3-button">Matricular em disciplinas</a>
+    <h1 style="text-align: center">
+        {{$aluno['nome']}}
+    </h1>
 
 <br>
 
-  <a href="{{ url('/registrationprof') }}" class="w3-bar-item w3-button">Cadastrar Professor</a>
-
-<br>
     <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Id</th>
+
       <th scope="col">Nome</th>
-      <th scope="col">Email</th>
+      <th scope="col">Carga Horária</th>
+      <th scope="col">Nota</th>
+      <th scope="col">Frequência</th>
 
     </tr>
   </thead>
   <tbody>
-    @foreach ($professores as $professor)
-        <tr> <td> {{ $professor['codigo'] }}</td>
-        <td> {{ $professor['nome'] }} </td>
-        <td> {{ $professor['email'] }} </td>
+    @foreach ($disciplinas as $disciplina)
+        <tr> <td> {{ $disciplina['nome'] }}</td>
+        <td> {{ $disciplina['cargahoraria'] }}h </td>
+        <td></td>
+        <td></td>
+        <td><a href="{{ url('edit/'.$disciplina['id']) }}" class="btn btn-dark">+ Nota</a></td>
+        <td><a href="{{ url('edit/'.$disciplina['id']) }}" class="btn btn-dark">+ Frequência</a></td>
+
 </tr>
     @endforeach
   </tbody>
 </table>
-
-
-
 
 </div>
 

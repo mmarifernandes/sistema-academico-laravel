@@ -23,4 +23,16 @@ class AlunosModel extends Model
         return $this->save($data);
     }
 
+        public function getaluno($id)
+    {
+            $disciplinas = AlunosModel::where('matricula', '=', $id);
+            return $disciplinas->first('*');
+    }
+    public function getalunodisc($id)
+    {
+            $disciplinas = AlunosModel::join('alunodisciplina', 'alunodisciplina.aluno', '=', 'alunos.matricula');
+            $disciplinas->join('disciplinas', 'disciplinas.codigo', '=', 'alunodisciplina.disciplina');
+            $disciplinas->where('matricula', '=', $id);
+            return $disciplinas->get();
+    }
 }
