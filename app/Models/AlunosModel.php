@@ -35,4 +35,9 @@ class AlunosModel extends Model
             $disciplinas->where('matricula', '=', $id);
             return $disciplinas->get();
     }
+
+        public function update($data)
+    {
+            $disciplinas = AlunosModel::where('matricula', '=', $data['aluno'], 'disciplina', '=', $data['disciplina'])->update(['nota' => $data['nota']]);
+    }
 }

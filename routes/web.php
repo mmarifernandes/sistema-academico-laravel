@@ -32,3 +32,5 @@ Route::get('professoresview',  'App\Http\Controllers\ProfessoresController@profe
 Route::post('insertdatadisc',  'App\Http\Controllers\DisciplinasController@insertDataDisciplina');
 Route::get('disciplinasview',  'App\Http\Controllers\DisciplinasController@disciplinasview');
 Route::get('alunoperfil/{id}','App\Http\Controllers\AlunosController@alunoPerfil');
+Route::post('insertdataalunodisc',  'App\Http\Controllers\AlunoDisciplinaController@insertDataAlunoDisc');
+Route::post('insertnotaaluno',  'App\Http\Controllers\AlunosController@insertNotaAluno');

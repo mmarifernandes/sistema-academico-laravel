@@ -22,7 +22,8 @@ class AlunosController extends Controller
         $data['disciplinas'] = $alunosmodel->getalunodisc($id);
         $data['all'] = $alunosmodel->getaluno($id);
         $data['aluno'] = $data['all'];
-
+  $disciplinasmodel = new DisciplinasModel;
+          $data['disciplinas2'] = $disciplinasmodel->get();
         return view('alunoperfil', $data);
     }
 
@@ -43,6 +44,19 @@ class AlunosController extends Controller
 
     }
 
+
+            public function insertNotaAluno(Request $request)
+        {
+
+        $alunosmodel = new AlunosModel;
+
+        $alunosmodel->nota = $request->nota;
+        $alunosmodel->aluno = $request->aluno;
+        $data[] = $alunosmodel;
+        $alunosmodel->update($data);
+        return redirect('/');
+
+    }
 
 
 

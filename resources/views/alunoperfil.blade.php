@@ -33,11 +33,52 @@
 <div style="margin-left:18%">
 
 <div class="w3-container w3-pink">
-  <h1>My system.exe</h1>
+  <h1>2School</h1>
 </div>
 <div class="w3-container">
     <br>
-    <a href="{{ url('/registrationaluno') }}" class="w3-bar-item w3-button">Matricular em disciplinas</a>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+Matricular em disciplinas
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Matricular {{$aluno['nome']}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div style="text-align: center" class="modal-body">
+        <form action="{{ url('insertdataalunodisc') }}" method="post">
+        @csrf
+<label for="disciplina">Selecione a disciplina: </label>
+<select name="disciplina" id="disciplina">
+
+    @foreach($disciplinas2 as $disciplina){
+    <option value="{{ $disciplina['codigo'] }}">{{ $disciplina['nome'] }} / Carga horária: {{ $disciplina['cargahoraria'] }}h</option>'
+    }
+    @endforeach
+</select>
+<input type="hidden" name="aluno" value="{{ $aluno['matricula'] }}">
+<br>
+<br>
+        <button type="submit" class="btn btn-primary" name="submit">Confirmar</button>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+    </div>
+    </div>
+</div>
+</div>
+
+
     <h1 style="text-align: center">
         {{$aluno['nome']}}
     </h1>
@@ -61,8 +102,8 @@
         <td> {{ $disciplina['cargahoraria'] }}h </td>
         <td></td>
         <td></td>
-        <td><a href="{{ url('edit/'.$disciplina['id']) }}" class="btn btn-dark">+ Nota</a></td>
-        <td><a href="{{ url('edit/'.$disciplina['id']) }}" class="btn btn-dark">+ Frequência</a></td>
+        <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#nota">Nota</button></td>
+        <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#frequencia">Frequência</button></td>
 
 </tr>
     @endforeach
@@ -73,4 +114,49 @@
 
 </div>
 </body>
+
+
+
+<!-- Modal Nota -->
+<div class="modal fade" id="nota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar/Editar Nota</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    <form action="{{ url('insertnotaaluno') }}" method="post">
+        @csrf
+        <label for="nota">Insira a nota:</label>
+        <input type="text" name="nota" placeholder="0 a 10">
+        <button type="submit" class="btn btn-primary" name="submit">Confirmar</button>
+    </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Frequência -->
+<div class="modal fade" id="frequencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar/Editar Frequência</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </html>

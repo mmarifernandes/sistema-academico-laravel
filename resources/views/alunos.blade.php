@@ -33,7 +33,7 @@
 <div style="margin-left:18%">
 
 <div class="w3-container w3-pink">
-  <h1>My system.exe</h1>
+  <h1>2School</h1>
 </div>
 
 
