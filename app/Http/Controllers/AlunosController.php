@@ -40,21 +40,7 @@ class AlunosController extends Controller
         $alunosmodel->matricula = $randomNumber;
         $data[] = $alunosmodel;
         $alunosmodel->insert($data);
-        return redirect('/');
-
-    }
-
-
-            public function insertNotaAluno(Request $request)
-        {
-
-        $alunosmodel = new AlunosModel;
-
-        $alunosmodel->nota = $request->nota;
-        $alunosmodel->aluno = $request->aluno;
-        $data[] = $alunosmodel;
-        $alunosmodel->update($data);
-        return redirect('/');
+        return redirect('/alunosview');
 
     }
 

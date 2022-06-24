@@ -33,7 +33,7 @@ class DisciplinasController extends Controller
 
         $data[] = $disciplinasmodel;
         $disciplinasmodel->insert($data);
-        return redirect('/');
+        return redirect('/disciplinasview');
 
     }
 

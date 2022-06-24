@@ -28,7 +28,7 @@ class ProfessoresController extends Controller
         $professoresmodel->codigo = $randomNumber;
         $data[] = $professoresmodel;
         $professoresmodel->insert($data);
-        return redirect('/');
+        return redirect('/professoresview');
 
     }
 

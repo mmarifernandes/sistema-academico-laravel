@@ -100,11 +100,10 @@ Matricular em disciplinas
     @foreach ($disciplinas as $disciplina)
         <tr> <td> {{ $disciplina['nome'] }}</td>
         <td> {{ $disciplina['cargahoraria'] }}h </td>
-        <td></td>
-        <td></td>
-        <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#nota">Nota</button></td>
-        <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#frequencia">Frequência</button></td>
-
+        <td> {{ $disciplina['nota'] }}</td>
+        <td> {{ $disciplina['frequencia'] }}%</td>
+        <td><a href="{{ url('editnota/'.$aluno['matricula'].'/'.$disciplina['disciplina']) }}" class="btn btn-dark">+ Nota</a></td>
+        <td><a href="{{ url('editfreq/'.$aluno['matricula'].'/'.$disciplina['disciplina']) }}" class="btn btn-dark">+ Frequência</a></td>
 </tr>
     @endforeach
   </tbody>
@@ -114,49 +113,4 @@ Matricular em disciplinas
 
 </div>
 </body>
-
-
-
-<!-- Modal Nota -->
-<div class="modal fade" id="nota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Adicionar/Editar Nota</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-    <form action="{{ url('insertnotaaluno') }}" method="post">
-        @csrf
-        <label for="nota">Insira a nota:</label>
-        <input type="text" name="nota" placeholder="0 a 10">
-        <button type="submit" class="btn btn-primary" name="submit">Confirmar</button>
-    </form>
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Modal Frequência -->
-<div class="modal fade" id="frequencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Adicionar/Editar Frequência</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 </html>
