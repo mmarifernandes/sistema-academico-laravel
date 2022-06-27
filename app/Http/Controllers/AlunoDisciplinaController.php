@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AlunoDisciplinaModel;
+use App\Models\DisciplinasModel;
 
 class AlunoDisciplinaController extends Controller
 {
@@ -13,13 +14,27 @@ class AlunoDisciplinaController extends Controller
 
 
         $alunodisciplinamodel = new AlunoDisciplinaModel;
+        $disciplinasmodel = new DisciplinasModel;
 
         $alunodisciplinamodel->aluno = $request->aluno;
         $alunodisciplinamodel->disciplina = $request->disciplina;
         $alunodisciplinamodel->id = $randomNumber;
         $data[] = $alunodisciplinamodel;
-        $alunodisciplinamodel->insert($data);
-        return redirect('/alunoperfil/'.$data[0]['aluno'].'');
+        $data['totalch'] = $disciplinasmodel->totalch($data[0]['aluno']);
+        $data['ch'] = $disciplinasmodel->getdisciplina($data[0]['disciplina']);
+        // print_r($data['ch']);
+        if($data['totalch']){
+        if($data['totalch']['total'] + $data['ch']['cargahoraria'] > 50){
+                        return redirect('/error');
+
+        }else{
+            $alunodisciplinamodel->insert($data);
+            return redirect('/alunoperfil/'.$data[0]['aluno'].'');
+            }
+        }else{
+                    $alunodisciplinamodel->insert($data);
+            return redirect('/alunoperfil/'.$data[0]['aluno'].'');
+            }
     }
 
 
@@ -42,7 +57,7 @@ class AlunoDisciplinaController extends Controller
         $data[] = $alunodisciplinamodel;
         print_r($data);
         $alunodisciplinamodel->updatenota($data);
-        return redirect('/alunoperfil/'.$data[0]['aluno'].'');
+        return redirect('/disciplinaperfil/'.$data[0]['disciplina'].'');
 
     }
 
@@ -68,7 +83,7 @@ class AlunoDisciplinaController extends Controller
         $data[] = $alunodisciplinamodel;
         print_r($data);
         $alunodisciplinamodel->updatefreq($data);
-        return redirect('/alunoperfil/'.$data[0]['aluno'].'');
+        return redirect('/disciplinaperfil/'.$data[0]['disciplina'].'');
 
     }
 

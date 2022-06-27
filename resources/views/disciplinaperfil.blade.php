@@ -16,7 +16,6 @@
     padding: 1rem 1rem !important;
 
 }
-
 .table{
     border: 1px solid black;
 }
@@ -39,36 +38,56 @@
 <div class="w3-container w3-pink">
   <h1>2School</h1>
 </div>
-
-
 <div class="w3-container">
+    <br>
 
-<br>
-  <a href="{{ url('/registrationaluno') }}" class="w3-bar-item w3-button">Cadastrar Aluno</a>
 
-<br>
-    <table class="table table-striped">
+    <h1 style="text-align: center">
+    {{ $disciplina['nome']}}
+    </h1>
+
+
+
+
+    <h1 style="text-align: center">
+    Alunos
+    </h1>
+
+  <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Matrícula</th>
+
       <th scope="col">Nome</th>
-      <th scope="col">Email</th>
+      <th scope="col">Carga Horária</th>
+      <th scope="col">Nota</th>
+      <th scope="col">Frequência</th>
+
+
 
     </tr>
   </thead>
   <tbody>
     @foreach ($alunos as $aluno)
         <tr> <td> {{ $aluno['matricula'] }}</td>
-        <td><a href="{{ url('alunoperfil/'.$aluno['matricula'])}}"> {{ $aluno['nome'] }} </a></td>
-        <td> {{ $aluno['email'] }} </td>
-</tr>
+        <td> {{ $aluno['nome'] }}</td>
+        <td> {{ $aluno['cargahoraria'] }}h </td>
+        <td> {{ $aluno['nota'] }} </td>
+        <td> {{ $aluno['frequencia'] }}% </td>
+         <td>
+            @if($aluno['frequencia'] < '75' || $aluno['nota'] < 7 )
+                Reprovado
+            @else
+            Aprovado
+            @endif
+    </td>
+           <td><a href="{{ url('editnota/'.$aluno['aluno'].'/'.$aluno['disciplina']) }}" class="btn btn-dark"><i class="fa-solid fa-pen-to-square"></i> Nota</a></td>
+        <td><a href="{{ url('editfreq/'.$aluno['aluno'].'/'.$aluno['disciplina']) }}" class="btn btn-dark"><i class="fa-solid fa-pen-to-square"></i> Frequência</a></td>
+       </tr>
+
     @endforeach
   </tbody>
 </table>
-
-
-
-
 </div>
 
 </div>

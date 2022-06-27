@@ -38,37 +38,10 @@
 <div class="w3-container w3-pink">
   <h1>2School</h1>
 </div>
-
-
 <div class="w3-container">
+    <br>
 
-<br>
-
-  <a href="{{ url('/registrationdisc') }}" class="w3-bar-item w3-button">Cadastrar Disciplinas</a>
-
-<br>
-    <table class="table table-striped">
-  <thead>
-    <tr>
-
-      <th scope="col">Nome</th>
-      <th scope="col">Professor</th>
-      <th scope="col">Carga Horária</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    @foreach ($disciplinas as $disciplina)
-        <tr> <td> <a href="{{ url('disciplinaperfil/'.$disciplina['codigod'])}}">{{ $disciplina['nomed'] }}</a></td>
-        <td> {{ $disciplina['nomep'] }} </td>
-        <td> {{ $disciplina['cargahoraria'] }}h </td>
-</tr>
-    @endforeach
-  </tbody>
-</table>
-
-
-
+<h1>A carga horária máxima permitida é <strong>50 horas</strong>, você <strong>não</strong> pode ultrapassar esse limite.</h1>
 
 </div>
 

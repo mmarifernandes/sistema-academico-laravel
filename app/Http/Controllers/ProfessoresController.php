@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProfessoresModel;
+use App\Models\DisciplinasModel;
+use App\Models\AlunoDisciplinaModel;
 
 class ProfessoresController extends Controller
 {
@@ -41,5 +43,21 @@ class ProfessoresController extends Controller
         $data['all'] = $professoresmodel->get();
         $data['professores'] = $data['all'];
         return view ('professores',$data);
+    }
+
+
+
+          public function professorPerfil($id)
+   {
+
+
+        $professoresmodel = new ProfessoresModel;
+        $disciplinasmodel = new DisciplinasModel;
+        $alunodisciplinamodel = new AlunoDisciplinaModel;
+
+        $data['disciplinas'] = $disciplinasmodel->getprofdisc($id);
+        $data['alunos'] = $alunodisciplinamodel->getalunos($id);
+
+        return view('professorperfil', $data);
     }
 }

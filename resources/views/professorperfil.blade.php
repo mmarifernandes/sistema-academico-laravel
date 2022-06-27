@@ -38,38 +38,62 @@
 <div class="w3-container w3-pink">
   <h1>2School</h1>
 </div>
-
-
 <div class="w3-container">
+    <br>
+
+
+
+
+    <h1 style="text-align: center">
+    Disciplinas ministradas
+    </h1>
 
 <br>
 
-  <a href="{{ url('/registrationdisc') }}" class="w3-bar-item w3-button">Cadastrar Disciplinas</a>
-
-<br>
     <table class="table table-striped">
   <thead>
     <tr>
 
       <th scope="col">Nome</th>
-      <th scope="col">Professor</th>
       <th scope="col">Carga Horária</th>
+
 
     </tr>
   </thead>
   <tbody>
     @foreach ($disciplinas as $disciplina)
-        <tr> <td> <a href="{{ url('disciplinaperfil/'.$disciplina['codigod'])}}">{{ $disciplina['nomed'] }}</a></td>
-        <td> {{ $disciplina['nomep'] }} </td>
+        <tr> <td> {{ $disciplina['nome'] }}</td>
         <td> {{ $disciplina['cargahoraria'] }}h </td>
-</tr>
+
     @endforeach
   </tbody>
 </table>
 
 
+<br>
+<br>
+    <h1 style="text-align: center">
+    Alunos
+    </h1>
+
+  <table class="table table-striped">
+  <thead>
+    <tr>
+
+      <th scope="col">Nome</th>
 
 
+
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($alunos as $aluno)
+        <tr> <td> {{ $aluno['nome'] }}</td>
+        <!-- <td> {{ $aluno['cargahoraria'] }}h </td> -->
+
+    @endforeach
+  </tbody>
+</table>
 </div>
 
 </div>

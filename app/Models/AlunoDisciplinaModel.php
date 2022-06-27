@@ -34,16 +34,32 @@ class AlunoDisciplinaModel extends Model
     }
             public function updatenota($data)
     {
-        print_r($data[0]['aluno']);
             $nota = AlunoDisciplinaModel::where('aluno', '=', $data[0]['aluno']);
             $nota->where('disciplina', '=', $data[0]['disciplina']);
             return $nota->update(['nota' => $data[0]['nota']]);
     }
                 public function updatefreq($data)
     {
-        print_r($data[0]['aluno']);
             $nota = AlunoDisciplinaModel::where('aluno', '=', $data[0]['aluno']);
             $nota->where('disciplina', '=', $data[0]['disciplina']);
             return $nota->update(['frequencia' => $data[0]['frequencia']]);
     }
+                    public function getalunos($id)
+    {
+            $alunos = AlunoDisciplinaModel::join('disciplinas', 'disciplinas.codigo', '=', 'alunodisciplina.disciplina');
+            $alunos->join('alunos', 'alunos.matricula', '=', 'alunodisciplina.aluno');
+            $alunos->where('professor', '=', $id);
+            $alunos->groupBy('aluno');
+            return $alunos->get();
+    }
+
+                  public function getalunos2($id)
+    {
+            $alunos = AlunoDisciplinaModel::join('disciplinas', 'disciplinas.codigo', '=', 'alunodisciplina.disciplina');
+            $alunos->join('alunos', 'alunos.matricula', '=', 'alunodisciplina.aluno');
+            $alunos->where('disciplina', '=', $id);
+            return $alunos->get();
+    }
+
+
 }

@@ -14,16 +14,24 @@ class AlunosController extends Controller
         return view('formregisteraluno');
     }
 
+       public function error()
+   {
+        return view('error');
+    }
+
        public function alunoPerfil($id)
    {
 
 
         $alunosmodel = new AlunosModel;
+        $disciplinasmodel = new DisciplinasModel;
+
         $data['disciplinas'] = $alunosmodel->getalunodisc($id);
         $data['all'] = $alunosmodel->getaluno($id);
         $data['aluno'] = $data['all'];
-  $disciplinasmodel = new DisciplinasModel;
-          $data['disciplinas2'] = $disciplinasmodel->get();
+          $data['disciplinas2'] = $disciplinasmodel->notin($id);
+          $data['totalch'] = $disciplinasmodel->totalch($id);
+        //   print_r($data['totalch']);
         return view('alunoperfil', $data);
     }
 

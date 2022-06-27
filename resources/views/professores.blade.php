@@ -16,6 +16,9 @@
     padding: 1rem 1rem !important;
 
 }
+.table{
+    border: 1px solid black;
+}
 </style>
 <body>
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:18%;">
@@ -56,7 +59,7 @@
   <tbody>
     @foreach ($professores as $professor)
         <tr> <td> {{ $professor['codigo'] }}</td>
-        <td> {{ $professor['nome'] }} </td>
+        <td><a href="{{ url('professorperfil/'.$professor['codigo'])}}"> {{ $professor['nome'] }}</a> </td>
         <td> {{ $professor['email'] }} </td>
 </tr>
     @endforeach

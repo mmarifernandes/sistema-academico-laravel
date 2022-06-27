@@ -16,6 +16,9 @@
     padding: 1rem 1rem !important;
 
 }
+.table{
+    border: 1px solid black;
+}
 </style>
 <body>
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:18%;">
@@ -59,15 +62,28 @@ Matricular em disciplinas
 <select name="disciplina" id="disciplina">
 
     @foreach($disciplinas2 as $disciplina){
-    <option value="{{ $disciplina['codigo'] }}">{{ $disciplina['nome'] }} / Carga horária: {{ $disciplina['cargahoraria'] }}h</option>'
+        <!-- if ($disciplina['codigo'] == ) continue; -->
+    <option value="{{ $disciplina['codigo'] }}">{{ $disciplina['nomed'] }} / Carga horária: {{ $disciplina['cargahoraria'] }}h</option>'
     }
     @endforeach
 </select>
 <input type="hidden" name="aluno" value="{{ $aluno['matricula'] }}">
 <br>
 <br>
+<p>Carga horária atual:</p>
+@if($totalch)
+<h1>
+{{$totalch['total']}}h
+</h1>
+@if($totalch['total'] < 50 )
         <button type="submit" class="btn btn-primary" name="submit">Confirmar</button>
+@else
+        <button type="submit" class="btn btn-primary" name="submit" disabled>Confirmar</button>
+@endif
 
+@else
+        <button type="submit" class="btn btn-primary" name="submit">Confirmar</button>
+@endif
         </form>
     </div>
     <div class="modal-footer">
@@ -102,8 +118,6 @@ Matricular em disciplinas
         <td> {{ $disciplina['cargahoraria'] }}h </td>
         <td> {{ $disciplina['nota'] }}</td>
         <td> {{ $disciplina['frequencia'] }}%</td>
-        <td><a href="{{ url('editnota/'.$aluno['matricula'].'/'.$disciplina['disciplina']) }}" class="btn btn-dark">+ Nota</a></td>
-        <td><a href="{{ url('editfreq/'.$aluno['matricula'].'/'.$disciplina['disciplina']) }}" class="btn btn-dark">+ Frequência</a></td>
 </tr>
     @endforeach
   </tbody>

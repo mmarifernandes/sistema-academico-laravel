@@ -7,6 +7,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+    <script src="https://kit.fontawesome.com/84a7caccb6.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>

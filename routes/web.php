@@ -37,3 +37,6 @@ Route::get('editnota/{id}/{coddisc}','App\Http\Controllers\AlunoDisciplinaContro
 Route::post('insertnotaaluno',  'App\Http\Controllers\AlunoDisciplinaController@insertNotaAluno');
 Route::get('editfreq/{id}/{coddisc}','App\Http\Controllers\AlunoDisciplinaController@editFreq');
 Route::post('insertfreqaluno',  'App\Http\Controllers\AlunoDisciplinaController@insertFreqAluno');
+Route::get('professorperfil/{id}','App\Http\Controllers\ProfessoresController@professorPerfil');
+Route::get('disciplinaperfil/{id}','App\Http\Controllers\DisciplinasController@disciplinaPerfil');
+Route::get('error','App\Http\Controllers\AlunosController@error');
