@@ -45,8 +45,8 @@ class DisciplinasModel extends Model
 
                         public function notin($id)
     {
-            $alunos = DisciplinasModel::join('alunodisciplina', 'disciplinas.codigo', '=', 'alunodisciplina.disciplina');
-            $alunos->join('alunos', 'alunos.matricula', '=', 'alunodisciplina.aluno');
+            $alunos = DisciplinasModel::leftjoin('alunodisciplina', 'disciplinas.codigo', '=', 'alunodisciplina.disciplina');
+            $alunos->leftjoin('alunos', 'alunos.matricula', '=', 'alunodisciplina.aluno');
             $alunos->select('disciplinas.nome as nomed', 'disciplinas.cargahoraria', 'disciplinas.codigo');
             $alunos->whereNotIn('disciplinas.codigo', function($q)use($id){$q->from('alunodisciplina')->select('disciplina')->where('aluno', '=', $id);})->groupBy('disciplinas.codigo');
             return $alunos->get();
